@@ -1,0 +1,15 @@
+group 'eu.hansolo'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'eu.hansolo:colors:1.+'
+    compile 'eu.hansolo:medusa:1.+'
+}
