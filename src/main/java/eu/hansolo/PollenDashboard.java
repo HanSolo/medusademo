@@ -18,6 +18,7 @@ package eu.hansolo;
 
 import eu.hansolo.colors.MaterialDesign;
 import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
 import eu.hansolo.medusa.skins.IndicatorSkin;
@@ -54,7 +55,7 @@ public class PollenDashboard extends Application {
 
     @Override public void init() {
         GaugeBuilder builder = GaugeBuilder.create()
-                                           .skin(IndicatorSkin.class)
+                                           .skinType(SkinType.INDICATOR)
                                            .prefWidth(150)
                                            .animated(true)
                                            .decimals(0)

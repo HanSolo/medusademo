@@ -19,6 +19,7 @@ package eu.hansolo;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.Gauge.NeedleShape;
 import eu.hansolo.medusa.Gauge.NeedleSize;
+import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.Gauge.TickMarkType;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
@@ -56,7 +57,7 @@ public class FuelGauge extends Application {
         fuelIcon.getStyleClass().setAll("fuel-icon");
 
         gauge = GaugeBuilder.create()
-                            .skin(HSkin.class)
+                            .skinType(SkinType.HORIZONTAL)
                             .prefSize(500, 250)
                             .knobColor(Color.rgb(0, 0, 0))
                             .foregroundBaseColor(Color.rgb(249, 249, 249))

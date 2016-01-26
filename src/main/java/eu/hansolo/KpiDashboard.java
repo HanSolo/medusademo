@@ -19,6 +19,7 @@ package eu.hansolo;
 import eu.hansolo.colors.MaterialDesign;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.Gauge.NeedleSize;
+import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.Gauge.TickLabelLocation;
 import eu.hansolo.medusa.Gauge.TickLabelOrientation;
 import eu.hansolo.medusa.Gauge.TickMarkType;
@@ -92,7 +93,7 @@ public class KpiDashboard extends Application {
                                  final double MAX_VALUE, final double THRESHOLD,
                                  final Section... SECTIONS) {
         return GaugeBuilder.create()
-                           .skin(BulletChartSkin.class)
+                           .skinType(SkinType.BULLET_CHART)
                            .animated(true)
                            .thresholdColor(GRAY)
                            .title(TITLE)

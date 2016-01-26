@@ -18,6 +18,7 @@ package eu.hansolo;
 
 import eu.hansolo.colors.MaterialDesign;
 import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.skins.SlimSkin;
 import javafx.application.Application;
@@ -54,7 +55,7 @@ public class ActivityDashboard extends Application {
 
     @Override public void init() {
         GaugeBuilder builder = GaugeBuilder.create()
-                                           .skin(SlimSkin.class)
+                                           .skinType(SkinType.SLIM)
                                            .barBackgroundColor(MaterialDesign.GREY_800.get())
                                            .animated(true)
                                            .animationDuration(1000);
