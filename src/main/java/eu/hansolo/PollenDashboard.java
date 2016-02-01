@@ -21,7 +21,6 @@ import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
-import eu.hansolo.medusa.skins.IndicatorSkin;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -47,9 +46,11 @@ import javafx.stage.Stage;
  */
 public class PollenDashboard extends Application {
     private static int   noOfNodes = 0;
-    private        Gauge tree;
+    private        Gauge ragweed;
+    private        Gauge birch;
     private        Gauge grass;
-    private        Gauge weed;
+    private        Gauge olive;
+    private        Gauge combined;
     private        VBox  pane;
 
 
@@ -63,15 +64,23 @@ public class PollenDashboard extends Application {
                                            .sections(new Section(0, 33, Color.rgb(34, 180, 11)),
                                                      new Section(33, 66, Color.rgb(255, 146, 0)),
                                                      new Section(66, 100, Color.rgb(255, 0, 39)));
-        tree  = builder.build();
-        grass = builder.build();
-        weed  = builder.build();
+        ragweed  = builder.build();
+        birch    = builder.build();
+        grass    = builder.build();
+        olive    = builder.build();
+        combined = builder.build();
 
-        HBox treeBox  = getHBox("TREE", tree);
-        HBox grassBox = getHBox("GRASS", grass);
-        HBox weedBox  = getHBox("WEED", weed);
+        HBox ragweedBox  = getHBox("RAGWEED", ragweed);
+        HBox birchBox    = getHBox("BIRCH", birch);
+        HBox grassBox    = getHBox("GRASS", grass);
+        HBox oliveBox    = getHBox("OLIVE", olive);
+        HBox combinedBox = getHBox("COMBINED", combined);
 
-        pane = new VBox(treeBox, new Separator(Orientation.HORIZONTAL), grassBox, new Separator(Orientation.HORIZONTAL), weedBox);
+        pane = new VBox(ragweedBox, new Separator(Orientation.HORIZONTAL),
+                        birchBox, new Separator(Orientation.HORIZONTAL),
+                        grassBox, new Separator(Orientation.HORIZONTAL),
+                        oliveBox, new Separator(Orientation.HORIZONTAL),
+                        combinedBox);
         pane.setPadding(new Insets(20, 20, 0, 20));
         pane.setSpacing(10);
         pane.setBackground(new Background(new BackgroundFill(Color.rgb(242, 242, 242), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -102,9 +111,9 @@ public class PollenDashboard extends Application {
         stage.setScene(scene);
         stage.show();
 
-        tree.setValue(70);
-        grass.setValue(45);
-        weed.setValue(15);
+        ragweed.setValue(70);
+        birch.setValue(45);
+        grass.setValue(15);
 
         // Calculate number of nodes
         calcNoOfNodes(pane);

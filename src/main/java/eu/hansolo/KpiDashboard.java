@@ -16,32 +16,18 @@
 
 package eu.hansolo;
 
-import eu.hansolo.colors.MaterialDesign;
 import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.Gauge.NeedleSize;
 import eu.hansolo.medusa.Gauge.SkinType;
-import eu.hansolo.medusa.Gauge.TickLabelLocation;
-import eu.hansolo.medusa.Gauge.TickLabelOrientation;
-import eu.hansolo.medusa.Gauge.TickMarkType;
 import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.LcdDesign;
 import eu.hansolo.medusa.Section;
-import eu.hansolo.medusa.skins.BulletChartSkin;
-import eu.hansolo.medusa.skins.HSkin;
-import eu.hansolo.medusa.skins.IndicatorSkin;
-import eu.hansolo.medusa.skins.KpiSkin;
-import eu.hansolo.medusa.skins.LcdSkin;
-import eu.hansolo.medusa.skins.SimpleSkin;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
