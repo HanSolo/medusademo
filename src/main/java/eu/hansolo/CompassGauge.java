@@ -74,7 +74,6 @@ public class CompassGauge extends Application {
                             .knobColor(Gauge.DARK_COLOR)
                             .needleShape(NeedleShape.FLAT)
                             .needleType(NeedleType.FAT)
-                            .needleColor(Gauge.DARK_COLOR)
                             .needleBehavior(NeedleBehavior.OPTIMIZED)
                             .tickLabelColor(Gauge.DARK_COLOR)
                             .animated(true)
@@ -82,7 +81,7 @@ public class CompassGauge extends Application {
                             .valueVisible(false)
                             .build();
 
-        gauge.currentValueProperty().addListener(o -> {
+        gauge.valueProperty().addListener(o -> {
             value.setText(String.format(Locale.US, "%.0f°", gauge.getValue()));
         });
 
