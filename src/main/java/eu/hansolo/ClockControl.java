@@ -33,8 +33,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 
 
 /**
@@ -79,7 +79,7 @@ public class ClockControl extends Application{
 
         Alarm alarmLightOn =
             AlarmBuilder.create()
-                        .time(LocalDateTime.now().plusSeconds(5))
+                        .time(ZonedDateTime.now().plusSeconds(5))
                         .repetition(Repetition.ONCE)
                         .text("Light On")
                         .command(lightOn)
@@ -87,7 +87,7 @@ public class ClockControl extends Application{
 
         Alarm alarmLightOff =
             AlarmBuilder.create()
-                        .time(LocalDateTime.now().plusSeconds(10))
+                        .time(ZonedDateTime.now().plusSeconds(10))
                         .repetition(Repetition.ONCE)
                         .text("Light off")
                         .command(lightOff)
