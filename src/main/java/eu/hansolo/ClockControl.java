@@ -79,24 +79,29 @@ public class ClockControl extends Application{
 
         Alarm alarmLightOn =
             AlarmBuilder.create()
-                        .time(ZonedDateTime.now().plusSeconds(5))
+                        .time(ZonedDateTime.now().plusMinutes(1))
                         .repetition(Repetition.ONCE)
                         .text("Light On")
                         .command(lightOn)
+                        .color(Color.LIME)
+                        .onAlarmMarkerPressed(e -> System.out.println("Light On marker pressed"))
                         .build();
 
         Alarm alarmLightOff =
             AlarmBuilder.create()
-                        .time(ZonedDateTime.now().plusSeconds(10))
+                        .time(ZonedDateTime.now().plusMinutes(10))
                         .repetition(Repetition.ONCE)
                         .text("Light off")
                         .command(lightOff)
+                        .color(Color.RED)
+                        .onAlarmMarkerPressed(e -> System.out.println("Light Off marker pressed"))
                         .build();
 
         clock2 = ClockBuilder.create()
                              .titleVisible(true)
                              .title("Alarms")
                              .alarmsEnabled(true)
+                             .alarmsVisible(true)
                              .alarms(alarmLightOn, alarmLightOff)
                              .onAlarm(event -> System.out.println("Alarm: " + LocalTime.now() + " : " + event.ALARM.getText()))
                              .secondsVisible(true)
