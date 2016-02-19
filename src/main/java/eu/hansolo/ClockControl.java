@@ -47,17 +47,21 @@ public class ClockControl extends Application{
 
     @Override public void init() {
         TimeSection gardenLightOn = TimeSectionBuilder.create()
-                                                      .start(LocalTime.of(19, 00, 00))
-                                                      .stop(LocalTime.of(22, 00, 00))
-                                                      .color(Color.rgb(200, 100, 0, 0.5))
+                                                      .start(LocalTime.now().plusHours(1))
+                                                      .stop(LocalTime.now().plusHours(3))
+                                                      .color(Color.rgb(200, 100, 0, 0.1))
+                                                      .highlightColor(Color.rgb(222, 111, 0, 0.75))
                                                       .onTimeSectionEntered(event -> System.out.println("Garden light on"))
                                                       .onTimeSectionLeft(event -> System.out.println("Garden light off"))
                                                       .build();
 
         TimeSection lunchBreak = TimeSectionBuilder.create()
-                                                   .start(LocalTime.of(12, 00, 00))
-                                                   .stop(LocalTime.of(13, 00, 00))
-                                                   .color(Color.rgb(200, 0, 0, 0.5))
+                                                   .start(LocalTime.now().plusMinutes(1))
+                                                   .stop(LocalTime.now().plusHours(1))
+                                                   .color(Color.rgb(200, 0, 0, 0.1))
+                                                   .highlightColor(Color.rgb(222, 0, 0, 0.75))
+                                                   .onTimeSectionEntered(event -> System.out.println("Lunch break started"))
+                                                   .onTimeSectionLeft(event -> System.out.println("Lunch break ended"))
                                                    .build();
 
 
@@ -65,9 +69,11 @@ public class ClockControl extends Application{
                              .titleVisible(true)
                              .title("Sections")
                              .sectionsVisible(true)
+                             .highlightSections(true)
                              .sections(gardenLightOn)
                              .checkSectionsForValue(true)
                              .areasVisible(true)
+                             .highlightAreas(true)
                              .areas(lunchBreak)
                              .secondsVisible(true)
                              .running(true)
