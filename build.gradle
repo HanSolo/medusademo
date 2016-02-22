@@ -12,5 +12,5 @@ repositories {
 dependencies {
     //compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'eu.hansolo:colors:1.+'
-    compile 'eu.hansolo:medusa:4.+'
+    compile 'eu.hansolo:Medusa:4.+'
 }
