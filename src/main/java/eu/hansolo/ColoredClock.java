@@ -52,6 +52,7 @@ public class ColoredClock extends Application {
                              .title("Colored")
                              .secondsVisible(false)
                              .borderPaint(Color.rgb(0, 96, 184))
+                             .borderWidth(5)
                              .hourColor(Color.rgb(0, 96, 184))
                              .minuteColor(Color.rgb(103, 153, 206))
                              .knobColor(Color.rgb(103, 153, 206))
