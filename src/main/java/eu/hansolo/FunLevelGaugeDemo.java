@@ -53,7 +53,7 @@ public class FunLevelGaugeDemo extends Application {
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
-                if (now > lastTimerCall + 20_000_000_000l) {
+                if (now > lastTimerCall + 10_000_000_000l) {
                     gauge.setLevel(RND.nextDouble());
                     lastTimerCall = now;
                 }
