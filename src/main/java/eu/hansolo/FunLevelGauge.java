@@ -84,9 +84,9 @@ public class FunLevelGauge extends Region {
         brighterColor   = color.deriveColor(0, 0.3, 1.5, 1);
         density         = 0.9; //0.75;
         friction        = 1.1; //1.14;
-        detail          = Math.round(PREFERRED_WIDTH / 10); // no of particles used to build up the wave
+        detail          = Math.round(PREFERRED_WIDTH / 20); // no of particles used to build up the wave
         particles       = new ArrayList<>();
-        impulseInterval = 2_000_000_000l;  // Interval between random impulses being inserted into the wave to keep it moving
+        impulseInterval = 1_000_000_000l;  // Interval between random impulses being inserted into the wave to keep it moving
         updateInterval  = 40_000_000l;     // Wave update interval
         lastUpdateCall  = System.nanoTime();
         lastImpulseCall = System.nanoTime();

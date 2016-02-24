@@ -49,12 +49,13 @@ public class FunLevelGaugeDemo extends Application {
 
     @Override public void init() {
         gauge = new FunLevelGauge();
+        gauge.setPrefSize(400, 400);
 
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
                 if (now > lastTimerCall + 10_000_000_000l) {
-                    gauge.setLevel(RND.nextDouble());
+                    gauge.setLevel(RND.nextDouble() * 0.5 + 0.25);
                     lastTimerCall = now;
                 }
             }
