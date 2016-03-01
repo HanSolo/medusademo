@@ -82,10 +82,10 @@ public class CompassGauge extends Application {
                             .build();
 
         gauge.valueProperty().addListener(o -> {
-            value.setText(String.format(Locale.US, "%.0f \u00B0", gauge.getValue()));
+            value.setText(String.format(Locale.US, "%.0f\u00B0", gauge.getValue()));
         });
 
-        value = new Label("0°");
+        value = new Label("0\u00B0");
         value.setFont(Fonts.latoBold(72));
         value.setAlignment(Pos.CENTER);
         value.setPrefWidth(400);
