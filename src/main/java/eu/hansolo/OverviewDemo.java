@@ -77,6 +77,8 @@ public class OverviewDemo extends Application {
     private Gauge          gauge22;
     private Gauge          gauge23;
     private Gauge          gauge24;
+    private Gauge          gauge25;
+    private Gauge          gauge26;
     private Clock          clock1;
     private Clock          clock2;
     private Clock          clock3;
@@ -426,6 +428,20 @@ public class OverviewDemo extends Application {
                                   SectionBuilder.create().start(90).stop(105).text("POOR").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(223, 49, 23)).textColor(Gauge.DARK_COLOR).build())
                               .build();
 
+        gauge25 = GaugeBuilder.create()
+                              .skinType(SkinType.BAR)
+                              .barColor(Color.rgb(237, 22, 72))
+                              .valueColor(Color.WHITE)
+                              .unitColor(Color.WHITE)
+                              .unit("KPH")
+                              .animated(true)
+                              .build();
+
+        gauge26 = GaugeBuilder.create()
+                              .skinType(SkinType.WHITE)
+                              .unit("")
+                              .build();
+
         clock1 = ClockBuilder.create()
                              .skinType(ClockSkinType.YOTA2)
                              .sectionsVisible(true)
@@ -497,7 +513,7 @@ public class OverviewDemo extends Application {
                 if (now > lastTimerCall + 3_000_000_000l) {
                     framedGauge1.getGauge().setValue(RND.nextDouble() * gauge1.getRange() + gauge1.getMinValue());
                     framedGauge2.getGauge().setValue(RND.nextDouble() * gauge2.getRange() + gauge2.getMinValue());
-                    gauge3.setValue(RND.nextDouble() * gauge3.getRange() + gauge4.getMinValue());
+                    gauge3.setValue(RND.nextDouble() * gauge3.getRange() + gauge3.getMinValue());
                     gauge4.setValue(RND.nextDouble() * gauge4.getRange() + gauge4.getMinValue());
                     gauge5.setValue(RND.nextDouble() * gauge5.getRange() + gauge5.getMinValue());
                     gauge6.setValue(RND.nextDouble() * gauge6.getRange() + gauge6.getMinValue());
@@ -519,6 +535,8 @@ public class OverviewDemo extends Application {
                     gauge22.setValue(RND.nextDouble() * gauge22.getRange() + gauge22.getMinValue());
                     gauge23.setValue(RND.nextDouble() * gauge23.getRange() + gauge23.getMinValue());
                     gauge24.setValue(RND.nextDouble() * gauge24.getRange() + gauge24.getMinValue());
+                    gauge25.setValue(RND.nextDouble() * gauge25.getRange() + gauge25.getMinValue());
+                    gauge26.setValue(RND.nextDouble() * gauge26.getRange() + gauge26.getMinValue());
                     lastTimerCall = now;
                 }
             }
@@ -559,6 +577,8 @@ public class OverviewDemo extends Application {
         pane.add(clock4, 5, 3);
         pane.add(clock7, 6, 3);
         pane.add(gauge24, 7, 3);
+        pane.add(gauge25, 0, 4);
+        pane.add(gauge26, 1, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
@@ -570,6 +590,7 @@ public class OverviewDemo extends Application {
         pane.getColumnConstraints().add(new ColumnConstraints(150));
         pane.getColumnConstraints().add(new ColumnConstraints(150));
         pane.getColumnConstraints().add(new ColumnConstraints(150));
+        pane.getRowConstraints().add(new RowConstraints(150));
         pane.getRowConstraints().add(new RowConstraints(150));
         pane.getRowConstraints().add(new RowConstraints(150));
         pane.getRowConstraints().add(new RowConstraints(150));
