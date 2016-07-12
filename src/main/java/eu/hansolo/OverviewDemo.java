@@ -79,6 +79,7 @@ public class OverviewDemo extends Application {
     private Gauge          gauge24;
     private Gauge          gauge25;
     private Gauge          gauge26;
+    private Gauge          gauge27;
     private Clock          clock1;
     private Clock          clock2;
     private Clock          clock3;
@@ -442,6 +443,11 @@ public class OverviewDemo extends Application {
                               .unit("")
                               .build();
 
+        gauge27 = GaugeBuilder.create()
+                              .skinType(SkinType.CHARGE)
+                              .build();
+        GridPane.setColumnSpan(gauge27, 2);
+
         clock1 = ClockBuilder.create()
                              .skinType(ClockSkinType.YOTA2)
                              .sectionsVisible(true)
@@ -537,6 +543,7 @@ public class OverviewDemo extends Application {
                     gauge24.setValue(RND.nextDouble() * gauge24.getRange() + gauge24.getMinValue());
                     gauge25.setValue(RND.nextDouble() * gauge25.getRange() + gauge25.getMinValue());
                     gauge26.setValue(RND.nextDouble() * gauge26.getRange() + gauge26.getMinValue());
+                    gauge27.setValue(RND.nextDouble() * gauge27.getRange() + gauge27.getMinValue());
                     lastTimerCall = now;
                 }
             }
@@ -579,6 +586,7 @@ public class OverviewDemo extends Application {
         pane.add(gauge24, 7, 3);
         pane.add(gauge25, 0, 4);
         pane.add(gauge26, 1, 4);
+        pane.add(gauge27, 2, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
