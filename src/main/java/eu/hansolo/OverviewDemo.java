@@ -80,6 +80,7 @@ public class OverviewDemo extends Application {
     private Gauge          gauge25;
     private Gauge          gauge26;
     private Gauge          gauge27;
+    private Gauge          gauge28;
     private Clock          clock1;
     private Clock          clock2;
     private Clock          clock3;
@@ -448,6 +449,18 @@ public class OverviewDemo extends Application {
                               .build();
         GridPane.setColumnSpan(gauge27, 2);
 
+        gauge28 = GaugeBuilder.create()
+                              .skinType(SkinType.SIMPLE_SECTION)
+                              .title("Title")
+                              .unit("unit")
+                              .titleColor(Color.WHITE)
+                              .unitColor(Color.WHITE)
+                              .valueColor(Color.WHITE)
+                              .sections(new Section(0, 33, Color.LIME),
+                                        new Section(33, 66, Color.YELLOW),
+                                        new Section(66, 100, Color.CRIMSON))
+                              .build();
+
         clock1 = ClockBuilder.create()
                              .skinType(ClockSkinType.YOTA2)
                              .sectionsVisible(true)
@@ -544,6 +557,7 @@ public class OverviewDemo extends Application {
                     gauge25.setValue(RND.nextDouble() * gauge25.getRange() + gauge25.getMinValue());
                     gauge26.setValue(RND.nextDouble() * gauge26.getRange() + gauge26.getMinValue());
                     gauge27.setValue(RND.nextDouble() * gauge27.getRange() + gauge27.getMinValue());
+                    gauge28.setValue(RND.nextDouble() * gauge28.getRange() + gauge28.getMinValue());
                     lastTimerCall = now;
                 }
             }
@@ -587,6 +601,7 @@ public class OverviewDemo extends Application {
         pane.add(gauge25, 0, 4);
         pane.add(gauge26, 1, 4);
         pane.add(gauge27, 2, 4);
+        pane.add(gauge28, 4, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
