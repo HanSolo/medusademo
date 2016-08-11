@@ -89,6 +89,7 @@ public class OverviewDemo extends Application {
     private Clock          clock6;
     private Clock          clock7;
     private Clock          clock8;
+    private Clock          clock9;
     private long           lastTimerCall;
     private AnimationTimer timer;
 
@@ -522,6 +523,13 @@ public class OverviewDemo extends Application {
                              .running(true)
                              .build();
 
+        clock9 = ClockBuilder.create()
+                             .skinType(ClockSkinType.DIGITAL)
+                             .running(true)
+                             .textColor(Color.WHITE)
+                             .dateColor(Color.LIGHTGRAY)
+                             .build();
+
         framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
 
         framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
@@ -602,6 +610,7 @@ public class OverviewDemo extends Application {
         pane.add(gauge26, 1, 4);
         pane.add(gauge27, 2, 4);
         pane.add(gauge28, 4, 4);
+        pane.add(clock9, 5, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
