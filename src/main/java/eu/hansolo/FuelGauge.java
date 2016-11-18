@@ -69,7 +69,7 @@ public class FuelGauge extends Application {
                             .needleSize(NeedleSize.THICK)
                             .minorTickMarksVisible(false)
                             .mediumTickMarksVisible(false)
-                            .majorTickMarkType(TickMarkType.TRIANGLE)
+                            //.majorTickMarkType(TickMarkType.TRIANGLE)
                             .sectionsVisible(true)
                             .sections(new Section(0, 0.2, Color.rgb(255, 10, 1)))
                             .minValue(0)

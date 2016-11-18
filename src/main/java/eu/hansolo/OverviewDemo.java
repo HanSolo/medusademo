@@ -17,6 +17,7 @@
 package eu.hansolo;
 
 import eu.hansolo.medusa.*;
+import eu.hansolo.medusa.Clock;
 import eu.hansolo.medusa.Clock.ClockSkinType;
 import eu.hansolo.medusa.Gauge.NeedleSize;
 import eu.hansolo.medusa.Gauge.ScaleDirection;
@@ -41,7 +42,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
-import java.time.LocalTime;
+import java.time.*;
 import java.util.Random;
 
 
@@ -90,6 +91,7 @@ public class OverviewDemo extends Application {
     private Clock          clock7;
     private Clock          clock8;
     private Clock          clock9;
+    private Clock          clock10;
     private long           lastTimerCall;
     private AnimationTimer timer;
 
@@ -530,6 +532,11 @@ public class OverviewDemo extends Application {
                              .dateColor(Color.LIGHTGRAY)
                              .build();
 
+        clock10 = ClockBuilder.create()
+                              //.skinType(ClockSkinType.DESIGN)
+                              .running(true)
+                              .build();
+
         framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
 
         framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
@@ -611,6 +618,7 @@ public class OverviewDemo extends Application {
         pane.add(gauge27, 2, 4);
         pane.add(gauge28, 4, 4);
         pane.add(clock9, 5, 4);
+        pane.add(clock10, 6, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
