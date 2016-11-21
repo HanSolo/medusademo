@@ -423,7 +423,7 @@ public class InteractiveGaugeSkin extends SkinBase<Gauge> implements Skin<Gauge>
         double  theta  = Math.atan2(ny, nx);
         theta         = Double.compare(theta, 0.0) >= 0 ? Math.toDegrees(theta) : Math.toDegrees((theta)) + 360.0;
         double angle  = (theta + 230) % 360;
-        if (angle > 320 && angle < 360) {
+        if (angle > startAngle && angle < 360) {
             angle = 0;
         } else if (angle <= 320 && angle > getSkinnable().getAngleRange()) {
             angle = getSkinnable().getAngleRange();
