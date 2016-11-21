@@ -533,7 +533,7 @@ public class OverviewDemo extends Application {
                              .build();
 
         clock10 = ClockBuilder.create()
-                              //.skinType(ClockSkinType.DESIGN)
+                              .skinType(ClockSkinType.DESIGN)
                               .running(true)
                               .build();
 
