@@ -82,6 +82,8 @@ public class OverviewDemo extends Application {
     private Gauge          gauge26;
     private Gauge          gauge27;
     private Gauge          gauge28;
+    private Gauge          gauge29;
+    private Gauge          gauge30;
     private Clock          clock1;
     private Clock          clock2;
     private Clock          clock3;
@@ -92,6 +94,7 @@ public class OverviewDemo extends Application {
     private Clock          clock8;
     private Clock          clock9;
     private Clock          clock10;
+    private Clock          clock11;
     private long           lastTimerCall;
     private AnimationTimer timer;
 
@@ -464,6 +467,15 @@ public class OverviewDemo extends Application {
                                         new Section(66, 100, Color.CRIMSON))
                               .build();
 
+        gauge29 = GaugeBuilder.create()
+                              .skinType(SkinType.TILE_KPI)
+                              .threshold(75)
+                              .build();
+
+        gauge30 = GaugeBuilder.create()
+                              .skinType(SkinType.TILE_TEXT_KPI)
+                              .build();
+
         clock1 = ClockBuilder.create()
                              .skinType(ClockSkinType.YOTA2)
                              .sectionsVisible(true)
@@ -537,6 +549,11 @@ public class OverviewDemo extends Application {
                               .running(true)
                               .build();
 
+        clock11 = ClockBuilder.create()
+                              .skinType(ClockSkinType.INDUSTRIAL)
+                              .running(true)
+                              .build();
+
         framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
 
         framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
@@ -573,6 +590,8 @@ public class OverviewDemo extends Application {
                     gauge26.setValue(RND.nextDouble() * gauge26.getRange() + gauge26.getMinValue());
                     gauge27.setValue(RND.nextDouble() * gauge27.getRange() + gauge27.getMinValue());
                     gauge28.setValue(RND.nextDouble() * gauge28.getRange() + gauge28.getMinValue());
+                    gauge29.setValue(RND.nextDouble() * gauge29.getRange() + gauge29.getMinValue());
+                    gauge30.setValue(RND.nextDouble() * gauge30.getRange() + gauge30.getMinValue());
                     lastTimerCall = now;
                 }
             }
@@ -589,6 +608,8 @@ public class OverviewDemo extends Application {
         pane.add(clock1, 5, 0);
         pane.add(clock5, 6, 0);
         pane.add(gauge22, 7, 0);
+        pane.add(gauge29, 8, 0);
+
         pane.add(gauge6, 0, 1);
         pane.add(gauge7, 1, 1);
         pane.add(gauge8, 2, 1);
@@ -597,6 +618,8 @@ public class OverviewDemo extends Application {
         pane.add(clock2, 5, 1);
         pane.add(gauge21, 6, 1);
         pane.add(gauge23, 7, 1);
+        pane.add(gauge30, 8, 1);
+
         pane.add(gauge11, 0, 2);
         pane.add(gauge12, 1, 2);
         pane.add(gauge13, 2, 2);
@@ -605,6 +628,7 @@ public class OverviewDemo extends Application {
         pane.add(clock3, 5, 2);
         pane.add(clock6, 6, 2);
         pane.add(clock8, 7,2);
+
         pane.add(gauge16, 0, 3);
         pane.add(gauge17, 1, 3);
         pane.add(gauge18, 2, 3);
@@ -613,12 +637,14 @@ public class OverviewDemo extends Application {
         pane.add(clock4, 5, 3);
         pane.add(clock7, 6, 3);
         pane.add(gauge24, 7, 3);
+
         pane.add(gauge25, 0, 4);
         pane.add(gauge26, 1, 4);
         pane.add(gauge27, 2, 4);
         pane.add(gauge28, 4, 4);
         pane.add(clock9, 5, 4);
         pane.add(clock10, 6, 4);
+        pane.add(clock11, 7, 4);
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
