@@ -50,8 +50,11 @@ import java.util.Random;
  * Created by hansolo on 11.12.15.
  */
 public class OverviewDemo extends Application {
-    private static final Random         RND       = new Random();
-    private static       int            noOfNodes = 0;
+    private static final Random RND            = new Random();
+    private static final double MIN_CELL_SIZE  = 80;
+    private static final double PREF_CELL_SIZE = 120;
+    private static final double MAX_CELL_SIZE  = 150;
+    private static       int    noOfNodes      = 0;
     private FGauge         framedGauge1;
     private Gauge          gauge1;
     private FGauge         framedGauge2;
@@ -404,8 +407,8 @@ public class OverviewDemo extends Application {
 
         gauge22 = GaugeBuilder.create()
                               .skinType(SkinType.DIGITAL)
-                              .foregroundBaseColor(Color.rgb(0,222,249))
-                              .barColor(Color.rgb(0,222,249))
+                              .foregroundBaseColor(Color.rgb(0, 222, 249))
+                              .barColor(Color.rgb(0, 222, 249))
                               .title("SLIM")
                               .unit("UNIT")
                               .animated(true)
@@ -413,8 +416,8 @@ public class OverviewDemo extends Application {
 
         gauge23 = GaugeBuilder.create()
                               .skinType(SkinType.SIMPLE_DIGITAL)
-                              .foregroundBaseColor(Color.rgb(0,249,222))
-                              .barColor(Color.rgb(0,249,222))
+                              .foregroundBaseColor(Color.rgb(0, 249, 222))
+                              .barColor(Color.rgb(0, 249, 222))
                               .unit("KPH")
                               .animated(true)
                               .build();
@@ -427,13 +430,62 @@ public class OverviewDemo extends Application {
                               .animated(true)
                               .highlightSections(true)
                               .sections(
-                                  SectionBuilder.create().start(0).stop(15).text("EXCELLENT").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(18, 158, 81)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(15).stop(30).text("VERY\nGOOD").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(151, 208, 77)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(30).stop(45).text("GOOD").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(197, 223, 0)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(45).stop(60).text("FAIRLY\nGOOD").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(251, 245, 0)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(60).stop(75).text("AVERAGE").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(247, 206, 0)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(75).stop(90).text("BELOW\nAVERAGE").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(227, 124, 1)).textColor(Gauge.DARK_COLOR).build(),
-                                  SectionBuilder.create().start(90).stop(105).text("POOR").color(Color.rgb(223, 223, 223)).highlightColor(Color.rgb(223, 49, 23)).textColor(Gauge.DARK_COLOR).build())
+                                  SectionBuilder.create()
+                                                .start(0)
+                                                .stop(15)
+                                                .text("EXCELLENT")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(18, 158, 81))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(15)
+                                                .stop(30)
+                                                .text("VERY\nGOOD")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(151, 208, 77))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(30)
+                                                .stop(45)
+                                                .text("GOOD")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(197, 223, 0))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(45)
+                                                .stop(60)
+                                                .text("FAIRLY\nGOOD")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(251, 245, 0))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(60)
+                                                .stop(75)
+                                                .text("AVERAGE")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(247, 206, 0))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(75)
+                                                .stop(90)
+                                                .text("BELOW\nAVERAGE")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(227, 124, 1))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build(),
+                                  SectionBuilder.create()
+                                                .start(90)
+                                                .stop(105)
+                                                .text("POOR")
+                                                .color(Color.rgb(223, 223, 223))
+                                                .highlightColor(Color.rgb(223, 49, 23))
+                                                .textColor(Gauge.DARK_COLOR)
+                                                .build())
                               .build();
 
         gauge25 = GaugeBuilder.create()
@@ -470,10 +522,12 @@ public class OverviewDemo extends Application {
         gauge29 = GaugeBuilder.create()
                               .skinType(SkinType.TILE_KPI)
                               .threshold(75)
+                              .animated(true)
                               .build();
 
         gauge30 = GaugeBuilder.create()
                               .skinType(SkinType.TILE_TEXT_KPI)
+                              .animated(true)
                               .build();
 
         clock1 = ClockBuilder.create()
@@ -524,11 +578,11 @@ public class OverviewDemo extends Application {
 
         clock7 = ClockBuilder.create()
                              .skinType(ClockSkinType.ROUND_LCD)
-                             .hourColor(Color.rgb(38,166,154))
-                             .minuteColor(Color.rgb(77,182,172))
-                             .secondColor(Color.rgb(128,203,196))
-                             .textColor(Color.rgb(128,203,196))
-                             .dateColor(Color.rgb(128,203,196))
+                             .hourColor(Color.rgb(38, 166, 154))
+                             .minuteColor(Color.rgb(77, 182, 172))
+                             .secondColor(Color.rgb(128, 203, 196))
+                             .textColor(Color.rgb(128, 203, 196))
+                             .dateColor(Color.rgb(128, 203, 196))
                              .running(true)
                              .build();
 
@@ -627,7 +681,7 @@ public class OverviewDemo extends Application {
         pane.add(gauge15, 4, 2);
         pane.add(clock3, 5, 2);
         pane.add(clock6, 6, 2);
-        pane.add(clock8, 7,2);
+        pane.add(clock8, 7, 2);
 
         pane.add(gauge16, 0, 3);
         pane.add(gauge17, 1, 3);
@@ -648,19 +702,12 @@ public class OverviewDemo extends Application {
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setPadding(new Insets(10));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getColumnConstraints().add(new ColumnConstraints(150));
-        pane.getRowConstraints().add(new RowConstraints(150));
-        pane.getRowConstraints().add(new RowConstraints(150));
-        pane.getRowConstraints().add(new RowConstraints(150));
-        pane.getRowConstraints().add(new RowConstraints(150));
-        pane.getRowConstraints().add(new RowConstraints(150));
+        for (int i = 0 ; i < 9 ; i++) {
+            pane.getColumnConstraints().add(new ColumnConstraints(MIN_CELL_SIZE, PREF_CELL_SIZE, MAX_CELL_SIZE));
+        }
+        for (int i = 0 ; i < 5 ; i++) {
+            pane.getRowConstraints().add(new RowConstraints(MIN_CELL_SIZE, PREF_CELL_SIZE, MAX_CELL_SIZE));
+        }
         pane.setBackground(new Background(new BackgroundFill(Color.rgb(90, 90, 90), CornerRadii.EMPTY, Insets.EMPTY)));
 
         Scene scene = new Scene(pane);
