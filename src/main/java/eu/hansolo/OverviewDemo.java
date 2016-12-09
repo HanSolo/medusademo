@@ -87,6 +87,7 @@ public class OverviewDemo extends Application {
     private Gauge          gauge28;
     private Gauge          gauge29;
     private Gauge          gauge30;
+    private Gauge          gauge31;
     private Clock          clock1;
     private Clock          clock2;
     private Clock          clock3;
@@ -209,7 +210,7 @@ public class OverviewDemo extends Application {
                              .skinType(SkinType.DASHBOARD)
                              .animated(true)
                              .title("Dashboard")
-                             .unit("°C")
+                             .unit("\u00B0C")
                              .maxValue(40)
                              .barColor(Color.CRIMSON)
                              .valueColor(Color.WHITE)
@@ -359,7 +360,7 @@ public class OverviewDemo extends Application {
                               .animated(true)
                               .title("Temperature")
                               .subTitle("Office")
-                              .unit("°C")
+                              .unit("\u00B0C")
                               .lcdDesign(LcdDesign.STANDARD_GREEN)
                               .build();
 
@@ -530,6 +531,11 @@ public class OverviewDemo extends Application {
                               .animated(true)
                               .build();
 
+        gauge31 = GaugeBuilder.create()
+                              .skinType(SkinType.TILE_SPARK_LINE)
+                              .averageVisible(true)
+                              .build();
+
         clock1 = ClockBuilder.create()
                              .skinType(ClockSkinType.YOTA2)
                              .sectionsVisible(true)
@@ -646,6 +652,7 @@ public class OverviewDemo extends Application {
                     gauge28.setValue(RND.nextDouble() * gauge28.getRange() + gauge28.getMinValue());
                     gauge29.setValue(RND.nextDouble() * gauge29.getRange() + gauge29.getMinValue());
                     gauge30.setValue(RND.nextDouble() * gauge30.getRange() + gauge30.getMinValue());
+                    gauge31.setValue(RND.nextDouble() * gauge31.getRange() + gauge31.getMinValue());
                     lastTimerCall = now;
                 }
             }
@@ -682,6 +689,7 @@ public class OverviewDemo extends Application {
         pane.add(clock3, 5, 2);
         pane.add(clock6, 6, 2);
         pane.add(clock8, 7, 2);
+        pane.add(gauge31, 8, 2);
 
         pane.add(gauge16, 0, 3);
         pane.add(gauge17, 1, 3);
