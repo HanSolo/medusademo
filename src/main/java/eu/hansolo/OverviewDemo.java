@@ -547,7 +547,7 @@ public class OverviewDemo extends Application {
         clock2 = ClockBuilder.create()
                              .skinType(ClockSkinType.LCD)
                              .lcdDesign(LcdDesign.DARKBLUE)
-                             .title("Münster")
+                             .title("Muenster")
                              .titleVisible(true)
                              .secondsVisible(true)
                              .alarmsEnabled(true)

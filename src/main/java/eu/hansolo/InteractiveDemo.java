@@ -42,7 +42,7 @@ public class InteractiveDemo extends Application {
                             .maxValue(100)
                             .animated(false)
                             .title("Title")
-                            .unit("°C")
+                            .unit("\u00B0C")
                             .subTitle("SubTitle")
                             .interactive(true)
                             .onButtonPressed(o -> System.out.println("Button pressed"))

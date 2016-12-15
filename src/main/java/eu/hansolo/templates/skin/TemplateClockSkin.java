@@ -104,7 +104,6 @@ public class TemplateClockSkin extends SkinBase<Clock> implements Skin<Clock> {
     }
 
 
-
     // ******************** Resizing ******************************************
     private void resize() {
         width  = getSkinnable().getWidth() - getSkinnable().getInsets().getLeft() - getSkinnable().getInsets().getRight();
