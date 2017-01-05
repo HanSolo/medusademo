@@ -2,6 +2,5 @@
 build
 .idea
 medusademo.iml
-gradle
 .DS_Store
 /libs
