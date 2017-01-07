@@ -99,6 +99,7 @@ public class OverviewDemo extends Application {
     private Clock          clock9;
     private Clock          clock10;
     private Clock          clock11;
+    private Clock          clock12;
     private long           lastTimerCall;
     private AnimationTimer timer;
 
@@ -182,6 +183,7 @@ public class OverviewDemo extends Application {
                                        new Section(50.0, 66.66666, "3", Color.web("#80b940")),
                                        new Section(66.66666, 83.33333, "4", Color.web("#95c262")),
                                        new Section(83.33333, 100.0, "5", Color.web("#badf8d")))
+                             .sectionsVisible(true)
                              .title("Simple")
                              .threshold(50)
                              .animated(true)
@@ -614,6 +616,11 @@ public class OverviewDemo extends Application {
                               .running(true)
                               .build();
 
+        clock12 = ClockBuilder.create()
+                              .skinType(ClockSkinType.TILE)
+                              .running(true)
+                              .build();
+
         framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
 
         framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
@@ -699,6 +706,7 @@ public class OverviewDemo extends Application {
         pane.add(clock4, 5, 3);
         pane.add(clock7, 6, 3);
         pane.add(gauge24, 7, 3);
+        pane.add(clock12, 8, 3);
 
         pane.add(gauge25, 0, 4);
         pane.add(gauge26, 1, 4);

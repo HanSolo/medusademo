@@ -6,11 +6,12 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    jcenter()
+    //mavenCentral()
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'eu.hansolo:colors:1.+'
     compile 'eu.hansolo:Medusa:7.+'
 }
