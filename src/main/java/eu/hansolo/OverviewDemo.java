@@ -363,7 +363,9 @@ public class OverviewDemo extends Application {
                               .title("Temperature")
                               .subTitle("Office")
                               .unit("\u00B0C")
-                              .lcdDesign(LcdDesign.STANDARD_GREEN)
+                              .lcdDesign(LcdDesign.BLUE_LIGHTBLUE2)
+                              .thresholdVisible(true)
+                              .threshold(25)
                               .build();
 
         gauge18 = GaugeBuilder.create()
