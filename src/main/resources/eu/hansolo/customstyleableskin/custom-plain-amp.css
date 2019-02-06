@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2019 by Gerrit Grunwald
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.gauge {
+    DARK_COLOR       : rgb(50, 50, 50);
+    BRIGHT_COLOR     : rgb(220, 220, 220);
+    ORANGE_COLOR     : rgb(240, 180, 0);
+
+    -foreground-color: BRIGHT_COLOR;
+    -background-color: DARK_COLOR;
+    -needle-color    : ORANGE_COLOR;
+    -tickmark-color  : BRIGHT_COLOR;
+    -ticklabel-color : BRIGHT_COLOR;
+}
+
+.background-pane {
+    -fx-background-color: -background-color;
+}
+.tickmarks {
+    -fx-fill: -foreground-color;
+}
+.shadow-group .needle {
+    -fx-fill        : linear-gradient(to right, -needle-color 0%,
+                                                -needle-color 50%,
+                                                derive(-needle-color, 20%) 50%,
+                                                derive(-needle-color, 20%) 100%);
+    -fx-stroke      : transparent;
+    -fx-stroke-width: 0px;
+}
+.background-pane .unit {
+    -fx-fill: -foreground-color;
+}
+
+
+.background-pane .lcd {
+    -fx-fill  : linear-gradient(to bottom, rgb(131, 133, 119) 0%,
+                                           rgb(176, 183, 167) 3%,
+                                           rgb(165, 174, 153) 50%,
+                                           rgb(166, 175, 156) 50%,
+                                           rgb(175, 184, 165) 100%);
+    -fx-stroke: linear-gradient(to bottom, rgb(26, 26, 26) 0%,
+                                           rgb(77, 77, 77) 1%,
+                                           rgb(77, 77, 77) 99%,
+                                           rgb(221, 221, 221) 100%);
+}
+.background-pane .lcd-background {
+    -fx-text-fill: rgba(35, 42, 52, 0.1);
+}
+.background-pane .lcd-foreground {
+    -fx-text-fill: rgb(35, 42, 52);
+}

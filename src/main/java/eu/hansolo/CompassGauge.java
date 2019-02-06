@@ -22,7 +22,10 @@ import eu.hansolo.medusa.Gauge.KnobType;
 import eu.hansolo.medusa.Gauge.NeedleBehavior;
 import eu.hansolo.medusa.Gauge.NeedleShape;
 import eu.hansolo.medusa.Gauge.NeedleType;
+import eu.hansolo.medusa.Gauge.SkinType;
 import eu.hansolo.medusa.GaugeBuilder;
+import eu.hansolo.medusa.TickLabelLocation;
+import eu.hansolo.medusa.TickLabelOrientation;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -54,30 +57,33 @@ public class CompassGauge extends Application {
 
     @Override public void init() {
         gauge = GaugeBuilder.create()
+                            .skinType(SkinType.GAUGE)
                             .prefSize(400, 400)
                             .borderPaint(Gauge.DARK_COLOR)
                             .minValue(0)
-                            .maxValue(359)
-                            .autoScale(false)
+                            .maxValue(360)
                             .startAngle(180)
                             .angleRange(360)
+                            .autoScale(false)
                             .minorTickMarksVisible(false)
                             .mediumTickMarksVisible(false)
-                            .majorTickMarksVisible(false)
+                            .majorTickMarksVisible(true)
                             .customTickLabelsEnabled(true)
-                            .customTickLabels("N", "", "", "", "", "", "", "", "",
-                                              "E", "", "", "", "", "", "", "", "",
-                                              "S", "", "", "", "", "", "", "", "",
-                                              "W", "", "", "", "", "", "", "", "")
-                            .customTickLabelFontSize(48)
+                            .tickLabelLocation(TickLabelLocation.OUTSIDE)
+                            .tickLabelOrientation(TickLabelOrientation.ORTHOGONAL)
+                            .minorTickSpace(1.5)
+                            .majorTickSpace(22.5)
+                            .customTickLabels("N", "", "NE", "", "E", "", "SE", "", "S",
+                                              "", "SW", "", "W", "", "NW", "")
+                            .customTickLabelFontSize(32)
                             .knobType(KnobType.FLAT)
                             .knobColor(Gauge.DARK_COLOR)
                             .needleShape(NeedleShape.FLAT)
-                            .needleType(NeedleType.FAT)
+                            .needleType(NeedleType.VARIOMETER)
                             .needleBehavior(NeedleBehavior.OPTIMIZED)
                             .tickLabelColor(Gauge.DARK_COLOR)
                             .animated(true)
-                            .animationDuration(500)
+                            .animationDuration(800)
                             .valueVisible(false)
                             .build();
 
@@ -94,7 +100,7 @@ public class CompassGauge extends Application {
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
                 if (now > lastTimerCall + 3_000_000_000l) {
-                    gauge.setValue(RND.nextDouble() * 359.9);
+                    gauge.setValue(RND.nextDouble() * gauge.getMaxValue());
                     lastTimerCall = now;
                 }
             }

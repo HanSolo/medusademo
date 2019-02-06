@@ -94,6 +94,7 @@ public class CustomGaugeSkinDemo extends Application {
         HBox pane = new HBox(gauge0, gauge1, gauge2, gauge3, gauge4, gauge5, gauge6, gauge7, gauge8, gauge9);
         pane.setBackground(new Background(new BackgroundFill(Gauge.DARK_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
         pane.setPadding(new Insets(10));
+        pane.setPrefWidth(400);
 
         Scene scene = new Scene(pane);
 

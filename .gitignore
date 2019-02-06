@@ -4,3 +4,4 @@ build
 medusademo.iml
 .DS_Store
 /libs
+/out
