@@ -1,19 +1,127 @@
+import java.text.SimpleDateFormat
+
 plugins {
-    id 'java'
+    id 'idea'
+    id 'java-library'
+    id 'com.google.osdetector'           version '1.7.3'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.beryx.jlink'                 version '3.0.1'
+    id 'net.nemerosa.versioning'         version '3.0.0'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+
+description = 'MedusaDemo a little demo project for the Medusa library'
+mainClassName = "$moduleName/eu.hansolo.OverviewDemo"
+
+Date buildTimeAndDate = new Date()
+ext {
+    buildDate       = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
+    buildTime       = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
+    platform        = osdetector.os == 'osx' ? osdetector.arch == 'aarch_64' ? 'mac-aarch64' : 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os == 'linux' ? osdetector.arch == 'aarch_64' ? 'linux-aarch64' : 'linux' : osdetector.os
+    ciOssrhUsername = System.getenv('OSSRH_USERNAME')
+    ciOssrhPassword = System.getenv('OSSRH_PASSWORD')
+    ciGHUser        = System.getenv('GH_USER')
+    ciGHToken       = System.getenv('GH_TOKEN')
+    gpgkey          = System.getenv("GPG_PRIVATE_KEY")
+    gpgpassphrase   = System.getenv("PASSPHRASE")
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation "org.openjfx:javafx-base:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-swing:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-fxml:${javafxVersion}:${platform}"
+    api "eu.hansolo:medusa:21.0.3"
+    api "eu.hansolo:colors:21.0.0"
 }
 
-test {
-    useJUnitPlatform()
+task ActivityDashboard(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.ActivityDashboardLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task ClockControl(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.ClockControlLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task ClockOfClocks(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.ClockOfClocksLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task ColoredClock(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.ColoredClockLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task CombinedGauges(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.CombinedGaugesLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task CompassGauge(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.CompassGaugeLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task CustomGaugeSkinDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.CustomGaugeSkinDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task FGaugeDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.FGaugeDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task FunLevelGaugeDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.FunLevelGaugeDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task FXMLDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.FXMLDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task GaugeDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.GaugeDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task InteractiveDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.InteractiveDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task KpiDashboard(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.KpiDashboardLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task MultiGaugeDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.MultiGaugeDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task OverviewDemo(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.OverviewDemoLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task PollenDashboard(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.PollenDashboardLauncher"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task Test(type: JavaExec) {
+    mainClass = "eu.hansolo.medusademo.TestLauncher"
+    classpath = sourceSets.main.runtimeClasspath
 }
