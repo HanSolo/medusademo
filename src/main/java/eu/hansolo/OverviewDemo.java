@@ -623,16 +623,15 @@ public class OverviewDemo extends Application {
                               .running(true)
                               .build();
 
-        framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
-
-        framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
+        //framedGauge1 = new FGauge(gauge1, GaugeDesign.ENZO, GaugeBackground.DARK_GRAY);
+        //framedGauge2 = new FGauge(gauge2, GaugeDesign.METAL);
 
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
                 if (now > lastTimerCall + 3_000_000_000l) {
-                    framedGauge1.getGauge().setValue(RND.nextDouble() * gauge1.getRange() + gauge1.getMinValue());
-                    framedGauge2.getGauge().setValue(RND.nextDouble() * gauge2.getRange() + gauge2.getMinValue());
+                    //framedGauge1.getGauge().setValue(RND.nextDouble() * gauge1.getRange() + gauge1.getMinValue());
+                    //framedGauge2.getGauge().setValue(RND.nextDouble() * gauge2.getRange() + gauge2.getMinValue());
                     gauge3.setValue(RND.nextDouble() * gauge3.getRange() + gauge3.getMinValue());
                     gauge4.setValue(RND.nextDouble() * gauge4.getRange() + gauge4.getMinValue());
                     gauge5.setValue(RND.nextDouble() * gauge5.getRange() + gauge5.getMinValue());
@@ -670,8 +669,8 @@ public class OverviewDemo extends Application {
 
     @Override public void start(Stage stage) {
         GridPane pane = new GridPane();
-        pane.add(framedGauge1, 0, 0);
-        pane.add(framedGauge2, 1, 0);
+        //pane.add(framedGauge1, 0, 0);
+        //pane.add(framedGauge2, 1, 0);
         pane.add(gauge3, 2, 0);
         pane.add(gauge4, 3, 0);
         pane.add(gauge5, 4, 0);

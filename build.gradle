@@ -1,99 +1,19 @@
-group 'eu.hansolo'
-version '1.0'
+plugins {
+    id 'java'
+}
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
-    jcenter()
     mavenCentral()
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'eu.hansolo:colors:+'
-    //compile 'eu.hansolo:Medusa:+'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-/*
-jar {
-    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
-    from files(sourceSets.main.output.classesDir)
+test {
+    useJUnitPlatform()
 }
-*/
-
-// Tasks to start the demos from gradle (e.g. gradle ActivityDashboard)
-task ActivityDashboard(type: JavaExec) {
-    main = "eu.hansolo.ActivityDashboard"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task ClockControl(type: JavaExec) {
-    main = "eu.hansolo.ClockControl"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task ClockOfClocks(type: JavaExec) {
-    main = "eu.hansolo.ClockOfClocks"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task ColoredCloc(type: JavaExec) {
-    main = "eu.hansolo.ColoredClock"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task CombinedGauges(type: JavaExec) {
-    main = "eu.hansolo.CombinedGauges"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task CompassGauge(type: JavaExec) {
-    main = "eu.hansolo.CompassGauge"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task CustomGaugeSkinDemo(type: JavaExec) {
-    main = "eu.hansolo.CustomGaugeSkinDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task FGaugeDemo(type: JavaExec) {
-    main = "eu.hansolo.FGaugeDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task FuelGaugeDemo(type: JavaExec) {
-    main = "eu.hansolo.FuelGaugeDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task FunLevelGaugeDemo(type: JavaExec) {
-    main = "eu.hansolo.FunLevelGaugeDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task GaugeDemo(type: JavaExec) {
-    main = "eu.hansolo.GaugeDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task InteractiveDemo(type: JavaExec) {
-    main = "eu.hansolo.InteractiveDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task MultiGaugeDemo(type: JavaExec) {
-    main = "eu.hansolo.MultiGaugeDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task OverviewDemo(type: JavaExec) {
-    main = "eu.hansolo.OverviewDemo"
-    classpath = sourceSets.main.runtimeClasspath
-}
-task PollenDashboard(type: JavaExec) {
-    main = "eu.hansolo.PollenDashboard"
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-
-
-
-
-
-
-
-
-
-
-
